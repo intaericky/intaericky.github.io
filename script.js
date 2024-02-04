@@ -117,46 +117,46 @@ function draw() {
         drawContent(8, pandoraDeterminist, "Nabla", "black");
     } else if (cursorOnSection21) {
         console.log("21");
-        drawContent(7, pandoraPositivist, "Times New Roman", "blue");
+        drawContent(7, pandoraPositivist, "Workbench", "blue");
     } else if (cursorOnSection31) {
         console.log("31");
-        drawContent(3, pandoraFundamentalist, "Roboto", "black");
+        drawContent(3, pandoraFundamentalist, "Special Elite", "black");
     } else if (cursorOnSection41) {
         console.log("41");
         drawContent(4, pandoraConspiracyTheorist, "Blaka Ink", "black");
     } else if (cursorOnSection12) {
         console.log("12");
-        drawContent(6, pandoraEmpiricist, "Roboto", "black");
+        drawContent(6, pandoraEmpiricist, "Amatic SC", "white");
     } else if (cursorOnSection22) {
         console.log("22");
-        drawContent(5, pandoraHumanist, "EB Garamond", "black");
+        drawContent(5, pandoraHumanist, "Fredericka the Great", "#9D5909");
     } else if (cursorOnSection32) {
         console.log("32");
-        drawContent(1, pandoraBeliever, "Roboto", "black");
+        drawContent(1, pandoraBeliever, "Gloria Hallelujah", "White");
     } else if (cursorOnSection42) {
         console.log("42");
-        drawContent(2, pandoraTraditionalist, "Roboto", "black");
+        drawContent(2, pandoraTraditionalist, "Astloch", "red");
     } else if (cursorOnSection13) {
         console.log("13");
         drawContent(11, pandoraHedonist, "Honk", "black");
     } else if (cursorOnSection23) {
         console.log("23");
-        drawContent(9, pandoraEpicurean, "Roboto", "black");
+        drawContent(9, pandoraEpicurean, "Shrikhand", "black");
     } else if (cursorOnSection33) {
         console.log("33");
-        drawContent(13, pandoraArtist, "Roboto", "black");
+        drawContent(13, pandoraArtist, "Redacted Script", "White");
     } else if (cursorOnSection43) {
         console.log("43");
-        drawContent(15, pandoraRevolutionary, "Roboto", "black");
+        drawContent(15, pandoraRevolutionary, "Protest Revolution", "white");
     } else if (cursorOnSection14) {
         console.log("14");
         drawContent(12, pandoraNarcissist, "Roboto", "black");
     } else if (cursorOnSection24) {
         console.log("24");
-        drawContent(10, pandoraCapitalist, "Libre Barcode EAN13 Text", "black");
+        drawContent(10, pandoraCapitalist, "Libre Barcode EAN13 Text", "#2B261C");
     } else if (cursorOnSection34) {
         console.log("34");
-        drawContent(14, pandoraIdeologue, "Roboto", "black");
+        drawContent(14, pandoraIdeologue, "Rock Salt", "Yellow");
     } else if (cursorOnSection44) {
         console.log("44");
         drawContent(16, pandoraNihilist, "Bungee Spice", "black");
