@@ -129,19 +129,19 @@ function draw() {
         drawContent(6, pandoraEmpiricist, "Amatic SC", "white");
     } else if (cursorOnSection22) {
         console.log("22");
-        drawContent(5, pandoraHumanist, "Fredericka the Great", "#9D5909");
+        drawContent(5, pandoraHumanist, "Fredericka the Great", "#9D5909", 112);
     } else if (cursorOnSection32) {
         console.log("32");
         drawContent(1, pandoraBeliever, "Gloria Hallelujah", "White");
     } else if (cursorOnSection42) {
         console.log("42");
-        drawContent(2, pandoraTraditionalist, "Astloch", "red");
+        drawContent(2, pandoraTraditionalist, "Astloch", "red", 104);
     } else if (cursorOnSection13) {
         console.log("13");
         drawContent(11, pandoraHedonist, "Honk", "black");
     } else if (cursorOnSection23) {
         console.log("23");
-        drawContent(9, pandoraEpicurean, "Shrikhand", "black");
+        drawContent(9, pandoraEpicurean, "Shrikhand", "black", 112);
     } else if (cursorOnSection33) {
         console.log("33");
         drawContent(13, pandoraArtist, "Redacted Script", "White");
@@ -150,16 +150,16 @@ function draw() {
         drawContent(15, pandoraRevolutionary, "Protest Revolution", "white");
     } else if (cursorOnSection14) {
         console.log("14");
-        drawContent(12, pandoraNarcissist, "Roboto", "black");
+        drawContent(12, pandoraNarcissist, "Pirata One", "White");
     } else if (cursorOnSection24) {
         console.log("24");
         drawContent(10, pandoraCapitalist, "Libre Barcode EAN13 Text", "#2B261C");
     } else if (cursorOnSection34) {
         console.log("34");
-        drawContent(14, pandoraIdeologue, "Rock Salt", "Yellow");
+        drawContent(14, pandoraIdeologue, "Rock Salt", "#FCDD09", 96);
     } else if (cursorOnSection44) {
         console.log("44");
-        drawContent(16, pandoraNihilist, "Bungee Spice", "black");
+        drawContent(16, pandoraNihilist, "Bungee Spice", "black", 120);
     } else {
         drawContent(17, pandoraUnknown, "Redacted", "black");
     }
@@ -167,7 +167,7 @@ function draw() {
     window.requestAnimationFrame(draw);
 }
 
-function drawContent(backgroundIndex, pandoraImgObj, fontName, fontColor) {
+function drawContent(backgroundIndex, pandoraImgObj, fontName, fontColor, titleFontSize = 128, captionFontSize = 24) {
     allBackgroundHidden();
     backgroundImgs[backgroundIndex].style.visibility = "visible";
     const pandoraRatio = pandoraImgObj.width / pandoraImgObj.height;
@@ -182,7 +182,7 @@ function drawContent(backgroundIndex, pandoraImgObj, fontName, fontColor) {
     }
     ctx.fillStyle = fontColor;
     ctx.strokeStyle = fontColor;
-    ctx.font = `128px ${fontName}`;
+    ctx.font = `${titleFontSize}px ${fontName}`;
     ctx.textAlign = "center";
     ctx.scale(canvas.height / 1080, canvas.height / 1080);
     if (false) {
@@ -192,7 +192,7 @@ function drawContent(backgroundIndex, pandoraImgObj, fontName, fontColor) {
         ctx.fillText("GODLESS CHAOS", canvas.width * 540 / canvas.height, 540);
     }
     ctx.scale(1080 / canvas.height, 1080 / canvas.height);
-    ctx.font = `24px ${fontName}`;
+    ctx.font = `${captionFontSize}px ${fontName}`;
     ctx.scale(canvas.height / 1080, canvas.height / 1080);
     if (false) {
         ctx.lineWidth = 1;
