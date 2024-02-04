@@ -22,8 +22,8 @@ addEventListener(
 );
 
 //Pandora Image Objects
-//Basic
-const pandoraBasic = new Image();
+//Default
+const pandoraDefault = new Image();
 //Religious Worldview
 const pandoraBeliever = new Image();
 const pandoraTraditionalist = new Image();
@@ -52,33 +52,36 @@ function init() {
 }
 
 function draw() {
+    drawBeliever();
+}
+
+function drawBeliever() {
     updateCanvasSize();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBeliever();
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const pandoraRatio = pandoraDefault.width / pandoraDefault.height;
+    if (pandoraRatio < displayRatio) {
+        const pandoraWidth = Math.round(canvas.height * pandoraRatio);
+        const pandoraHeight = canvas.height;
+        ctx.drawImage(pandoraDefault, (canvas.width - pandoraWidth) / 2, 0, pandoraWidth, pandoraHeight);
+    } else {
+        const pandoraWidth = canvas.width;
+        const pandoraHeight = Math.round(canvas.width / pandoraRatio);
+        ctx.drawImage(pandoraDefault, 0, 0, pandoraWidth, pandoraHeight);
+    }
+    ctx.fillStyle = "black";
+    ctx.font = "500 128px sans-serif";
+    ctx.textAlign = "center";
+    ctx.scale(canvas.height / 1080, canvas.height / 1080);
+    ctx.fillText("GODLESS CHAOS", canvas.width * 540 / canvas.height, 540);
+    ctx.scale(1080 / canvas.height, 1080 / canvas.height);
     ctx.save();
     window.requestAnimationFrame(draw);
 }
 
-function drawBeliever() {
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    const pandoraRatio = pandoraBasic.width / pandoraBasic.height;
-    if (pandoraRatio < displayRatio) {
-        const pandoraWidth = Math.round(canvas.height * pandoraRatio);
-        const pandoraHeight = canvas.height;
-        ctx.drawImage(pandoraBasic, (canvas.width - pandoraWidth) / 2, 0, pandoraWidth, pandoraHeight);
-    } else {
-        const pandoraWidth = canvas.width;
-        const pandoraHeight = Math.round(canvas.width / pandoraRatio);
-        ctx.drawImage(pandoraBasic, 0, 0, pandoraWidth, pandoraHeight);
-    }
-    ctx.fillStyle = "black";
-    ctx.font = "500 128px 'Roboto'";
-    ctx.fillText("GODLESS CHAOS", 0, 200);
-}
-
 function imgSrcLoad() {
-    pandoraBasic.src = "Resources/pandoraBasic.png"
+    pandoraDefault.src = "Resources/pandoraDefault.png"
     pandoraBeliever.src = "Resources/pandoraBeliever.png"
     pandoraTraditionalist.src = "Resources/pandoraTraditionalist.png"
     pandoraFundamentalist.src = "Resources/pandoraFundamentalist.png"
