@@ -52,12 +52,112 @@ function init() {
 }
 
 function draw() {
-    drawBeliever();
+    updateCanvasSize();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const cursorOnCanvasX = cursor.x - (vw - canvas.width) / 2;
+    const cursorOnCanvasY = cursor.y - (vh - canvas.height) / 2;
+    const cursorOnSection11 =
+        cursorOnCanvasX >= 0 && cursorOnCanvasX < canvas.width / 4 &&
+        cursorOnCanvasY >= 0 && cursorOnCanvasY < canvas.height / 4;
+    const cursorOnSection21 =
+        cursorOnCanvasX >= canvas.width / 4 && cursorOnCanvasX < canvas.width * 2 / 4 &&
+        cursorOnCanvasY >= 0 && cursorOnCanvasY < canvas.height / 4;
+    const cursorOnSection31 =
+        cursorOnCanvasX >= canvas.width * 2 / 4 && cursorOnCanvasX < canvas.width * 3 / 4 &&
+        cursorOnCanvasY >= 0 && cursorOnCanvasY < canvas.height / 4;
+    const cursorOnSection41 =
+        cursorOnCanvasX >= canvas.width * 3 / 4 && cursorOnCanvasX <= canvas.width &&
+        cursorOnCanvasY >= 0 && cursorOnCanvasY < canvas.height / 4;
+    const cursorOnSection12 =
+        cursorOnCanvasX >= 0 && cursorOnCanvasX < canvas.width / 4 &&
+        cursorOnCanvasY >= canvas.height / 4 && cursorOnCanvasY < canvas.height * 2 / 4;
+    const cursorOnSection22 =
+        cursorOnCanvasX >= canvas.width / 4 && cursorOnCanvasX < canvas.width * 2 / 4 &&
+        cursorOnCanvasY >= canvas.height / 4 && cursorOnCanvasY < canvas.height * 2 / 4;
+    const cursorOnSection32 =
+        cursorOnCanvasX >= canvas.width * 2 / 4 && cursorOnCanvasX < canvas.width * 3 / 4 &&
+        cursorOnCanvasY >= canvas.height / 4 && cursorOnCanvasY < canvas.height * 2 / 4;
+    const cursorOnSection42 =
+        cursorOnCanvasX >= canvas.width * 3 / 4 && cursorOnCanvasX <= canvas.width &&
+        cursorOnCanvasY >= canvas.height / 4 && cursorOnCanvasY < canvas.height * 2 / 4;
+    const cursorOnSection13 =
+        cursorOnCanvasX >= 0 && cursorOnCanvasX < canvas.width / 4 &&
+        cursorOnCanvasY >= canvas.height * 2 / 4 && cursorOnCanvasY < canvas.height * 3 / 4;
+    const cursorOnSection23 =
+        cursorOnCanvasX >= canvas.width / 4 && cursorOnCanvasX < canvas.width * 2 / 4 &&
+        cursorOnCanvasY >= canvas.height * 2 / 4 && cursorOnCanvasY < canvas.height * 3 / 4;
+    const cursorOnSection33 =
+        cursorOnCanvasX >= canvas.width * 2 / 4 && cursorOnCanvasX < canvas.width * 3 / 4 &&
+        cursorOnCanvasY >= canvas.height * 2 / 4 && cursorOnCanvasY < canvas.height * 3 / 4;
+    const cursorOnSection43 =
+        cursorOnCanvasX >= canvas.width * 3 / 4 && cursorOnCanvasX <= canvas.width &&
+        cursorOnCanvasY >= canvas.height * 2 / 4 && cursorOnCanvasY < canvas.height * 3 / 4;
+    const cursorOnSection14 =
+        cursorOnCanvasX >= 0 && cursorOnCanvasX < canvas.width / 4 &&
+        cursorOnCanvasY >= canvas.height * 3 / 4 && cursorOnCanvasY <= canvas.height;
+    const cursorOnSection24 =
+        cursorOnCanvasX >= canvas.width / 4 && cursorOnCanvasX < canvas.width * 2 / 4 &&
+        cursorOnCanvasY >= canvas.height * 3 / 4 && cursorOnCanvasY <= canvas.height;
+    const cursorOnSection34 =
+        cursorOnCanvasX >= canvas.width * 2 / 4 && cursorOnCanvasX < canvas.width * 3 / 4 &&
+        cursorOnCanvasY >= canvas.height * 3 / 4 && cursorOnCanvasY <= canvas.height;
+    const cursorOnSection44 =
+        cursorOnCanvasX >= canvas.width * 3 / 4 && cursorOnCanvasX <= canvas.width &&
+        cursorOnCanvasY >= canvas.height * 3 / 4 && cursorOnCanvasY <= canvas.height;
+    if (cursorOnSection11) {
+        console.log("11");
+        drawBeliever();
+    } else if (cursorOnSection21) {
+        console.log("21");
+        drawBeliever();
+    } else if (cursorOnSection31) {
+        console.log("31");
+        drawBeliever();
+    } else if (cursorOnSection41) {
+        console.log("41");
+        drawBeliever();
+    } else if (cursorOnSection12) {
+        console.log("12");
+        drawBeliever();
+    } else if (cursorOnSection22) {
+        console.log("22");
+        drawBeliever();
+    } else if (cursorOnSection32) {
+        console.log("32");
+        drawBeliever();
+    } else if (cursorOnSection42) {
+        console.log("42");
+        drawBeliever();
+    } else if (cursorOnSection13) {
+        console.log("13");
+        drawBeliever();
+    } else if (cursorOnSection23) {
+        console.log("23");
+        drawBeliever();
+    } else if (cursorOnSection33) {
+        console.log("33");
+        drawBeliever();
+    } else if (cursorOnSection43) {
+        console.log("43");
+        drawBeliever();
+    } else if (cursorOnSection14) {
+        console.log("14");
+        drawBeliever();
+    } else if (cursorOnSection24) {
+        console.log("24");
+        drawBeliever();
+    } else if (cursorOnSection34) {
+        console.log("34");
+        drawBeliever();
+    } else if (cursorOnSection44) {
+        console.log("44");
+        drawBeliever();
+    }
+    ctx.save();
+    window.requestAnimationFrame(draw);
 }
 
 function drawBeliever() {
-    updateCanvasSize();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     const pandoraRatio = pandoraDefault.width / pandoraDefault.height;
@@ -76,8 +176,6 @@ function drawBeliever() {
     ctx.scale(canvas.height / 1080, canvas.height / 1080);
     ctx.fillText("GODLESS CHAOS", canvas.width * 540 / canvas.height, 540);
     ctx.scale(1080 / canvas.height, 1080 / canvas.height);
-    ctx.save();
-    window.requestAnimationFrame(draw);
 }
 
 function imgSrcLoad() {
