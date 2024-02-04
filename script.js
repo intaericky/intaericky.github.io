@@ -1,3 +1,5 @@
+const backgroundImgs = document.querySelectorAll("img");
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 let vw, vh;
@@ -44,6 +46,8 @@ const pandoraArtist = new Image();
 const pandoraIdeologue = new Image();
 const pandoraRevolutionary = new Image();
 const pandoraNihilist = new Image();
+//Unknown
+const pandoraUnknown = new Image();
 
 function init() {
     imgSrcLoad();
@@ -56,6 +60,8 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const cursorOnCanvasX = cursor.x - (vw - canvas.width) / 2;
     const cursorOnCanvasY = cursor.y - (vh - canvas.height) / 2;
+
+    //Section Sensing
     const cursorOnSection11 =
         cursorOnCanvasX >= 0 && cursorOnCanvasX < canvas.width / 4 &&
         cursorOnCanvasY >= 0 && cursorOnCanvasY < canvas.height / 4;
@@ -104,78 +110,103 @@ function draw() {
     const cursorOnSection44 =
         cursorOnCanvasX >= canvas.width * 3 / 4 && cursorOnCanvasX <= canvas.width &&
         cursorOnCanvasY >= canvas.height * 3 / 4 && cursorOnCanvasY <= canvas.height;
+
+    //Drawing
     if (cursorOnSection11) {
         console.log("11");
-        drawBeliever();
+        drawContent(8, pandoraDeterminist, "Nabla", "black");
     } else if (cursorOnSection21) {
         console.log("21");
-        drawBeliever();
+        drawContent(7, pandoraPositivist, "Times New Roman", "blue");
     } else if (cursorOnSection31) {
         console.log("31");
-        drawBeliever();
+        drawContent(3, pandoraFundamentalist, "Roboto", "black");
     } else if (cursorOnSection41) {
         console.log("41");
-        drawBeliever();
+        drawContent(4, pandoraConspiracyTheorist, "Blaka Ink", "black");
     } else if (cursorOnSection12) {
         console.log("12");
-        drawBeliever();
+        drawContent(6, pandoraEmpiricist, "Roboto", "black");
     } else if (cursorOnSection22) {
         console.log("22");
-        drawBeliever();
+        drawContent(5, pandoraHumanist, "EB Garamond", "black");
     } else if (cursorOnSection32) {
         console.log("32");
-        drawBeliever();
+        drawContent(1, pandoraBeliever, "Roboto", "black");
     } else if (cursorOnSection42) {
         console.log("42");
-        drawBeliever();
+        drawContent(2, pandoraTraditionalist, "Roboto", "black");
     } else if (cursorOnSection13) {
         console.log("13");
-        drawBeliever();
+        drawContent(11, pandoraHedonist, "Honk", "black");
     } else if (cursorOnSection23) {
         console.log("23");
-        drawBeliever();
+        drawContent(9, pandoraEpicurean, "Roboto", "black");
     } else if (cursorOnSection33) {
         console.log("33");
-        drawBeliever();
+        drawContent(13, pandoraArtist, "Roboto", "black");
     } else if (cursorOnSection43) {
         console.log("43");
-        drawBeliever();
+        drawContent(15, pandoraRevolutionary, "Roboto", "black");
     } else if (cursorOnSection14) {
         console.log("14");
-        drawBeliever();
+        drawContent(12, pandoraNarcissist, "Roboto", "black");
     } else if (cursorOnSection24) {
         console.log("24");
-        drawBeliever();
+        drawContent(10, pandoraCapitalist, "Libre Barcode EAN13 Text", "black");
     } else if (cursorOnSection34) {
         console.log("34");
-        drawBeliever();
+        drawContent(14, pandoraIdeologue, "Roboto", "black");
     } else if (cursorOnSection44) {
         console.log("44");
-        drawBeliever();
+        drawContent(16, pandoraNihilist, "Bungee Spice", "black");
+    } else {
+        drawContent(17, pandoraUnknown, "Redacted", "black");
     }
     ctx.save();
     window.requestAnimationFrame(draw);
 }
 
-function drawBeliever() {
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    const pandoraRatio = pandoraDefault.width / pandoraDefault.height;
+function drawContent(backgroundIndex, pandoraImgObj, fontName, fontColor) {
+    allBackgroundHidden();
+    backgroundImgs[backgroundIndex].style.visibility = "visible";
+    const pandoraRatio = pandoraImgObj.width / pandoraImgObj.height;
     if (pandoraRatio < displayRatio) {
         const pandoraWidth = Math.round(canvas.height * pandoraRatio);
         const pandoraHeight = canvas.height;
-        ctx.drawImage(pandoraDefault, (canvas.width - pandoraWidth) / 2, 0, pandoraWidth, pandoraHeight);
+        ctx.drawImage(pandoraImgObj, (canvas.width - pandoraWidth) / 2, 0, pandoraWidth, pandoraHeight);
     } else {
         const pandoraWidth = canvas.width;
         const pandoraHeight = Math.round(canvas.width / pandoraRatio);
-        ctx.drawImage(pandoraDefault, 0, 0, pandoraWidth, pandoraHeight);
+        ctx.drawImage(pandoraImgObj, 0, 0, pandoraWidth, pandoraHeight);
     }
-    ctx.fillStyle = "black";
-    ctx.font = "500 128px sans-serif";
+    ctx.fillStyle = fontColor;
+    ctx.strokeStyle = fontColor;
+    ctx.font = `128px ${fontName}`;
     ctx.textAlign = "center";
     ctx.scale(canvas.height / 1080, canvas.height / 1080);
-    ctx.fillText("GODLESS CHAOS", canvas.width * 540 / canvas.height, 540);
+    if (false) {
+        ctx.lineWidth = 2;
+        ctx.strokeText("GODLESS CHAOS", canvas.width * 540 / canvas.height, 540);
+    } else {
+        ctx.fillText("GODLESS CHAOS", canvas.width * 540 / canvas.height, 540);
+    }
     ctx.scale(1080 / canvas.height, 1080 / canvas.height);
+    ctx.font = `24px ${fontName}`;
+    ctx.scale(canvas.height / 1080, canvas.height / 1080);
+    if (false) {
+        ctx.lineWidth = 1;
+        ctx.strokeText("Dedicated to my dear friend Youngjae Lee who saved my soul.", canvas.width * 540 / canvas.height, 596);
+    } else {
+        ctx.fillText("Dedicated to my dear friend Youngjae Lee who saved my soul.", canvas.width * 540 / canvas.height, 596);
+    }
+    ctx.scale(1080 / canvas.height, 1080 / canvas.height);
+}
+
+function allBackgroundHidden() {
+    for (let i = 0; i < backgroundImgs.length; i++) {
+        backgroundImgs[i].style.visibility = "hidden";
+    }
 }
 
 function imgSrcLoad() {
@@ -196,6 +227,7 @@ function imgSrcLoad() {
     pandoraIdeologue.src = "Resources/pandoraIdeologue.png"
     pandoraRevolutionary.src = "Resources/pandoraRevolutionary.png"
     pandoraNihilist.src = "Resources/pandoraNihilist.png"
+    pandoraUnknown.src = "Resources/pandoraUnknown.png"
 }
 
 function updateCanvasSize() {
