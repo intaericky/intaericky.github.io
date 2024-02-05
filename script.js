@@ -1,9 +1,12 @@
 const backgroundImgs = document.querySelectorAll("img");
+const sounds = document.querySelectorAll("audio");
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 let vw, vh;
 let displayRatio = 1;
+let soundIndex = 13;
+let prevSoundIndex = 0;
 
 const cursor = {
     x: innerWidth / 2,
@@ -127,57 +130,81 @@ function draw() {
 
     //Drawing
     if (cursorOnSection11) {
-        console.log("11");
+        prevSoundIndex = soundIndex;
+        soundIndex = 8;
         drawContent(8, pandoraDeterminist, "Nabla", "#FEDE3F");
     } else if (cursorOnSection21) {
-        console.log("21");
+        prevSoundIndex = soundIndex;
+        soundIndex = 7;
         drawContent(7, pandoraPositivist, "Workbench", "blue");
     } else if (cursorOnSection31) {
-        console.log("31");
+        prevSoundIndex = soundIndex;
+        soundIndex = 3;
         drawContent(3, pandoraFundamentalist, "Special Elite", "black");
     } else if (cursorOnSection41) {
-        console.log("41");
+        prevSoundIndex = soundIndex;
+        soundIndex = 4;
         drawContent(4, pandoraConspiracyTheorist, "Blaka Ink", "black");
     } else if (cursorOnSection12) {
-        console.log("12");
+        prevSoundIndex = soundIndex;
+        soundIndex = 6;
         drawContent(6, pandoraEmpiricist, "Amatic SC", "white");
     } else if (cursorOnSection22) {
-        console.log("22");
+        prevSoundIndex = soundIndex;
+        soundIndex = 5;
         drawContent(5, pandoraHumanist, "Fredericka the Great", "#83450C", 112);
     } else if (cursorOnSection32) {
-        console.log("32");
+        prevSoundIndex = soundIndex;
+        soundIndex = 1;
         drawContent(1, pandoraBeliever, "Gloria Hallelujah", "White");
     } else if (cursorOnSection42) {
-        console.log("42");
+        prevSoundIndex = soundIndex;
+        soundIndex = 2;
         drawContent(2, pandoraTraditionalist, "Astloch", "red", 104);
     } else if (cursorOnSection13) {
-        console.log("13");
+        prevSoundIndex = soundIndex;
+        soundIndex = 11;
         drawContent(11, pandoraHedonist, "Honk", "#00FF1A");
     } else if (cursorOnSection23) {
-        console.log("23");
+        prevSoundIndex = soundIndex;
+        soundIndex = 9;
         drawContent(9, pandoraEpicurean, "Shrikhand", "black", 112);
     } else if (cursorOnSection33) {
-        console.log("33");
+        prevSoundIndex = soundIndex;
+        soundIndex = 13;
         drawContent(13, pandoraArtist, "Redacted Script", "White");
     } else if (cursorOnSection43) {
-        console.log("43");
+        prevSoundIndex = soundIndex;
+        soundIndex = 15;
         drawContent(15, pandoraRevolutionary, "Protest Revolution", "white");
     } else if (cursorOnSection14) {
-        console.log("14");
+        prevSoundIndex = soundIndex;
+        soundIndex = 12;
         drawContent(12, pandoraNarcissist, "Pirata One", "#F5E7CC");
     } else if (cursorOnSection24) {
-        console.log("24");
+        prevSoundIndex = soundIndex;
+        soundIndex = 10;
         drawContent(10, pandoraCapitalist, "Libre Barcode EAN13 Text", "#262626");
     } else if (cursorOnSection34) {
-        console.log("34");
+        prevSoundIndex = soundIndex;
+        soundIndex = 14;
         drawContent(14, pandoraIdeologue, "Rock Salt", "#FCDD09", 96);
     } else if (cursorOnSection44) {
-        console.log("44");
+        prevSoundIndex = soundIndex;
+        soundIndex = 16;
         drawContent(16, pandoraNihilist, "Bungee Spice", "black", 120);
     } else {
+        prevSoundIndex = soundIndex;
+        soundIndex = 17;
         drawContent(17, pandoraUnknown, "Redacted", "black");
     }
     ctx.save();
+    if (soundIndex != prevSoundIndex) {
+        sounds[prevSoundIndex].muted = true;
+        sounds[soundIndex].muted = false;
+        sounds[soundIndex].play();
+        console.log(soundIndex);
+    }
     window.requestAnimationFrame(draw);
 }
 
@@ -220,6 +247,12 @@ function drawContent(backgroundIndex, pandoraImgObj, fontName, fontColor, titleF
 function allBackgroundHidden() {
     for (let i = 0; i < backgroundImgs.length; i++) {
         backgroundImgs[i].style.visibility = "hidden";
+    }
+}
+
+function muteAllSounds() {
+    for (let i = 0; i < sounds.length; i++) {
+        sounds[i].muted = true;
     }
 }
 
