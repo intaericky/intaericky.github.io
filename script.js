@@ -129,7 +129,7 @@ function draw() {
         drawContent(6, pandoraEmpiricist, "Amatic SC", "white");
     } else if (cursorOnSection22) {
         console.log("22");
-        drawContent(5, pandoraHumanist, "Fredericka the Great", "#9D5909", 112);
+        drawContent(5, pandoraHumanist, "Fredericka the Great", "#83450C", 112);
     } else if (cursorOnSection32) {
         console.log("32");
         drawContent(1, pandoraBeliever, "Gloria Hallelujah", "White");
@@ -150,10 +150,10 @@ function draw() {
         drawContent(15, pandoraRevolutionary, "Protest Revolution", "white");
     } else if (cursorOnSection14) {
         console.log("14");
-        drawContent(12, pandoraNarcissist, "Pirata One", "White");
+        drawContent(12, pandoraNarcissist, "Pirata One", "#F5E7CC");
     } else if (cursorOnSection24) {
         console.log("24");
-        drawContent(10, pandoraCapitalist, "Libre Barcode EAN13 Text", "#2B261C");
+        drawContent(10, pandoraCapitalist, "Libre Barcode EAN13 Text", "#262626");
     } else if (cursorOnSection34) {
         console.log("34");
         drawContent(14, pandoraIdeologue, "Rock Salt", "#FCDD09", 96);
