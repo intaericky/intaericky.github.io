@@ -52,7 +52,21 @@ const pandoraUnknown = new Image();
 function init() {
     imgSrcLoad();
     ctx.imageSmoothingEnabled = true;
-    window.requestAnimationFrame(draw);
+    addEventListener("mousedown", (e) => {
+        window.requestAnimationFrame(draw);
+    });
+    addEventListener("touchstart", (e) => {
+        window.requestAnimationFrame(draw);
+    });
+    drawDefault();
+}
+
+function drawDefault() {
+    updateCanvasSize();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawContent(0, pandoraDefault, "Roboto", "Black");
+    ctx.save();
+    window.requestAnimationFrame(drawDefault);
 }
 
 function draw() {
@@ -114,7 +128,7 @@ function draw() {
     //Drawing
     if (cursorOnSection11) {
         console.log("11");
-        drawContent(8, pandoraDeterminist, "Nabla", "black");
+        drawContent(8, pandoraDeterminist, "Nabla", "#FEDE3F");
     } else if (cursorOnSection21) {
         console.log("21");
         drawContent(7, pandoraPositivist, "Workbench", "blue");
@@ -138,7 +152,7 @@ function draw() {
         drawContent(2, pandoraTraditionalist, "Astloch", "red", 104);
     } else if (cursorOnSection13) {
         console.log("13");
-        drawContent(11, pandoraHedonist, "Honk", "White");
+        drawContent(11, pandoraHedonist, "Honk", "#00FF1A");
     } else if (cursorOnSection23) {
         console.log("23");
         drawContent(9, pandoraEpicurean, "Shrikhand", "black", 112);
