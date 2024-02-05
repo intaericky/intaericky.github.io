@@ -139,7 +139,6 @@ body {
 }
 
 canvas {
-    font-family: 'Bungee Spice', sans-serif;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -153,6 +152,7 @@ img {
     object-fit: contain;
     display: block;
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
