@@ -138,7 +138,7 @@ function draw() {
         drawContent(2, pandoraTraditionalist, "Astloch", "red", 104);
     } else if (cursorOnSection13) {
         console.log("13");
-        drawContent(11, pandoraHedonist, "Honk", "black");
+        drawContent(11, pandoraHedonist, "Honk", "White");
     } else if (cursorOnSection23) {
         console.log("23");
         drawContent(9, pandoraEpicurean, "Shrikhand", "black", 112);
