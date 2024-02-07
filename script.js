@@ -201,6 +201,7 @@ function draw() {
     ctx.save();
     if (soundIndex != prevSoundIndex) {
         sounds[prevSoundIndex].muted = true;
+        sounds[prevSoundIndex].pause();
         sounds[soundIndex].muted = false;
         sounds[soundIndex].play();
         console.log(soundIndex);
