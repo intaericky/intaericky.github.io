@@ -1,7 +1,7 @@
 const backgroundImgs = document.querySelectorAll("img");
 const sounds = document.querySelectorAll("audio");
 sounds[2].volume = 0.2;
-sounds[3].volume = 0.7;
+sounds[3].volume = 0.6;
 sounds[4].volume = 0.3;
 
 const canvas = document.querySelector("canvas");
