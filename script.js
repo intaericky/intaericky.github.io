@@ -241,9 +241,9 @@ function drawContent(backgroundIndex, pandoraImgObj, fontName, fontColor, titleF
     ctx.scale(canvas.height / 1080, canvas.height / 1080);
     if (false) {
         ctx.lineWidth = 1;
-        ctx.strokeText("Dedicated to my dear friend Youngjae Lee who saved my soul.", canvas.width * 540 / canvas.height, 596);
+        ctx.strokeText("Dedicated to my dear friend Yeongjae Lee who saved my soul.", canvas.width * 540 / canvas.height, 596);
     } else {
-        ctx.fillText("Dedicated to my dear friend Youngjae Lee who saved my soul.", canvas.width * 540 / canvas.height, 596);
+        ctx.fillText("Dedicated to my dear friend Yeongjae Lee who saved my soul.", canvas.width * 540 / canvas.height, 596);
     }
     ctx.scale(1080 / canvas.height, 1080 / canvas.height);
 }
